@@ -6,10 +6,10 @@ class Footer extends Component{
 		return(
 			<div className="Footer">
 				<footer>
-			        <div class="row">
-			            <div class="skewed-bg footer-wrapper">
-			                <div class="footer-inside">
-			                    <div class="content">
+			        <div className="row">
+			            <div className="skewed-bg footer-wrapper">
+			                <div className="footer-inside">
+			                    <div className="content">
 			                        <p>
 			                            Все права защищены Эпиграф С 2017
 			                        </p>

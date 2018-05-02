@@ -11,20 +11,22 @@ class Content extends Component{
 	}
 	onClick(e){
 		console.log("lalal");
-		e.preventDefault();
+		//e.preventDefault();
 		this.setState({showChapterList: !this.state.showChapterList});
+		 $(".book-titles-wrapper").toggleClass("opened");
+		 console.log("something",$(this));
+        $(".aside-menu-button").toggleClass("opened");
 	}
 	render(){
-		function showContent(){
-			console.log("HEEET");
-			// (".book-titles-wrapper").toggleClass("opened");
-        	$(this).toggleClass("opened");
-        	// {this.state.showReply && < ReplyForm / >}
-		}
+
 		return(
 			<div className="Content">
-				<div class="aside-menu-button-wrapper" onClick={showContent} >
-			        <div class="aside-menu-button" >
+				<div className="book-titles-wrapper">
+					<ChapterList/>
+				</div>
+				<div className="aside-menu-button-wrapper" onClick={this.onClick.bind(this)} >
+					{this.state.showReply && < ChapterList / >}
+			        <div className="aside-menu-button" >
 			            <div id="hexagon">
 			                <p>
 			                    содержание
@@ -32,9 +34,9 @@ class Content extends Component{
 			            </div>
 			        </div>
 			    </div>
-				<div class="main-content-wrapper">
-			        <div class="container">
-			            <div class="main-content">
+				<div className="main-content-wrapper">
+			        <div className="container">
+			            <div className="main-content">
 			                <p>
 			                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
 			                    in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur

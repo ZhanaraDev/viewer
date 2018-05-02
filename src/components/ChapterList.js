@@ -3,18 +3,18 @@ import React, { Component } from 'react';
 class ChapterList extends Component{
 	render(){
 		return(
-			<div class="book-titles-wrapper">
+			<div className="book-titles-wrapper">
 
-		        <div class="aside-menu-content ">
-		            <div class="book-title">
+		        <div className="aside-menu-content ">
+		            <div className="book-title">
 		                Название книги
 		                Название книги
 		                Название книги
 		            </div>
-		            <div class="book-paragpraphs-wrapper">
-		                <ul class="paragraph-title-wrapper">
+		            <div className="book-paragpraphs-wrapper">
+		                <ul className="paragraph-title-wrapper">
 		                    <li>
-		                        <div class="paragraph-title">
+		                        <div className="paragraph-title">
 		                            Тема1
 		                        </div>
 		                    </li>
