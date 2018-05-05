@@ -350,11 +350,6 @@ footer {
 ul.paragraph-title-wrapper{
     padding-left: 40px;
 }
-/*delete?*/
-/*.paragraph-current.opened{
-    color:red;
-    background-image: url(../img/circle_white.png);
-}*/
 
 .paragraph-text{
     margin-left: 6px;
@@ -403,6 +398,24 @@ ul.paragraph-title-wrapper{
     color: #6b6b6b;
 }
 
+/*delete?*/
 
+.paragraph-current:hover{
+    background-image: url(../img/gradient_blue.png);
+    opacity: 0.788;
+    /*position: fixed;*/
+    left: -2px;
+    top: 372px;
+    width: 414px;
+    height: 261px;
+    z-index: 27;
+    color: red;
+}
+
+
+.paragraph-current.opened{
+    color:yellow;
+    background-image: url(../img/circle_white.png);
+}
 
 

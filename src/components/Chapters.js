@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import $ from 'jquery';
 import ChapterList from '../containers/ChapterList';
 
-class Chapter extends Component{
+class Chapters extends Component{
 	constructor(props){
 		super(props);
 		this.state = 
@@ -39,4 +39,4 @@ class Chapter extends Component{
 	}
 }
 
-export default Chapter;
+export default Chapters;

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
-import ChapterList from './Chapter'
+import Chapters from './Chapters'
 import ChapterContent from '../containers/ChapterContent'
 
 class Content extends Component{
@@ -23,7 +23,7 @@ class Content extends Component{
 		return(
 			<div className="Content">
 				<div className="book-titles-wrapper">
-					<ChapterList/>
+					<Chapters/>
 				</div>
 				<div className="aside-menu-button-wrapper" onClick={this.onClick.bind(this)} >
 					
