@@ -6,5 +6,16 @@ import registerServiceWorker from './registerServiceWorker';
 import './assets/css/materialize.min.css';
 import './assets/css/style.css';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+
+import {createStore} from 'redux';
+import { Provider } from 'react-redux';
+import allReducers from './reducers';
+
+const store = createStore(allReducers)
+
+ReactDOM.render(
+	<Provider store = {store}>
+		<App />
+	</Provider>,
+	document.getElementById('root'));
 registerServiceWorker();
