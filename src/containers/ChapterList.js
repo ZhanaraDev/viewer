@@ -9,7 +9,7 @@ class ChapterList extends Component{
 				(chapter) => {
 					const classes = this.props.chapter_active.id===chapter.id ?"paragraph-current active" : "paragraph-current";
 					return(
-						<a className={classes} href="#" onClick={() => this.props.select(chapter)} key={chapter.id} >
+						<div className={classes} href="#" onClick={() => this.props.select(chapter)} key={chapter.id} >
 							<ul className="paragraph-title-wrapper">
 			                    <li>
 			                        <div className="paragraph-title">
@@ -22,7 +22,7 @@ class ChapterList extends Component{
 				                    </p>   
 				                </div>
 				            </ul>
-			            </a>
+			            </div>
 					);
 				} 
 			);

@@ -353,6 +353,7 @@ ul.paragraph-title-wrapper{
 
 .paragraph-text{
     margin-left: 6px;
+    margin-top: 11px;
 }
 
 .paragraph-title {
@@ -395,27 +396,32 @@ ul.paragraph-title-wrapper{
 }
 
 .paragraph-current{
+    font-family: Verdana;
+    font-size: 17px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1;
+    letter-spacing: -0.5px;
+    text-align: left;
     color: #6b6b6b;
 }
 
 /*delete?*/
-
-.paragraph-current:hover{
-    background-image: url(../img/gradient_blue.png);
-    opacity: 0.788;
-    /*position: fixed;*/
-    left: -2px;
-    top: 372px;
-    width: 414px;
-    height: 261px;
-    z-index: 27;
-    color: red ;
-}
-
-
 .paragraph-current.active{
-    color:yellow;
-    background-image: url(../img/circle_white.png);
+    font-family: Verdana;
+    font-size: 17px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1;
+    letter-spacing: -0.5px;
+    text-align: left;
+    color: #1553b3;
+    /*background-color:pink; */
+    background-image: url(../img/gradient_blue.png);
+    background-size: 409px 261px;
+    /*background-image: url(../img/circle_white.png);*/
 }
 
 
