@@ -4,18 +4,9 @@ import Chapters from './Chapters'
 import ChapterContent from '../containers/ChapterContent'
 
 class Content extends Component{
-	constructor(){
-		super();
-		this.state = {
-			showChapterList: false
-		}
-	}
+	
 	onClick(e){
-		console.log("lalal");
-		//e.preventDefault();
-		this.setState({showChapterList: !this.state.showChapterList});
-		 $(".book-titles-wrapper").toggleClass("opened");
-		 console.log("something",$(this));
+		$(".book-titles-wrapper").toggleClass("opened");
         $(".aside-menu-button").toggleClass("opened");
 	}
 	render(){

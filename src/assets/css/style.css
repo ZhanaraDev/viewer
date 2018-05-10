@@ -409,11 +409,11 @@ ul.paragraph-title-wrapper{
     width: 414px;
     height: 261px;
     z-index: 27;
-    color: red;
+    color: red ;
 }
 
 
-.paragraph-current.opened{
+.paragraph-current.active{
     color:yellow;
     background-image: url(../img/circle_white.png);
 }

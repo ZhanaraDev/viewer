@@ -7,8 +7,9 @@ class ChapterList extends Component{
 	showList(){
 		return this.props.chapters.map(
 				(chapter) => {
+					const classes = this.props.chapter_active.id===chapter.id ?"paragraph-current active" : "paragraph-current";
 					return(
-						<a className="paragraph-current" href="#" onClick={() => this.props.select(chapter)} key={chapter.id} >
+						<a className={classes} href="#" onClick={() => this.props.select(chapter)} key={chapter.id} >
 							<ul className="paragraph-title-wrapper">
 			                    <li>
 			                        <div className="paragraph-title">
@@ -38,7 +39,8 @@ class ChapterList extends Component{
 
 function mapStateToProps(state){
 	return {
-		chapters: state.chapters
+		chapters: state.chapters,
+		chapter_active: state.active
 	};
 }
 

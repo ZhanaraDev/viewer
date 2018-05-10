@@ -3,6 +3,6 @@ export default function(state=[], action){
 		case "CHAPTER_SELECTED":
 			return action.payload;
 		default:
-			return state; 
+			return []; 
 	}
 }
