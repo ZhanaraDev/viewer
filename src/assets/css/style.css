@@ -241,6 +241,7 @@ footer {
     padding-left: 10px;
     position: relative;
     padding-right: 80px;
+    background-image: inherit;
 }
 
 .book-titles-wrapper.opened {
@@ -322,6 +323,13 @@ footer {
     margin-top: 20px;
     position: relative;
     padding-left: 20px;
+    background-color: #f1f1f1;
+    /*box-shadow: 100px 100px 100px #f1f1f1;*/
+    -webkit-box-shadow: 1px 35px 153px 35px #f1f1f1;
+
+    -moz-box-shadow: 1px 1px 153px 135px #f1f1f1;
+    box-shadow: 1px 35px 153px 35px #f1f1f1;
+
 }
 
 .book-paragpraphs-wrapper::before, .book-paragpraphs-wrapper::after {
@@ -337,6 +345,7 @@ footer {
     height: 100%;
     border-radius: 10px;
     background-color: #0265ff;
+    z-index:2;
 }
 
 .book-paragpraphs-wrapper::after {
@@ -345,6 +354,7 @@ footer {
     width: 28px;
     height: 28px;
     background-image: url(../img/circle.png);
+    z-index:3;
 }
 
 ul.paragraph-title-wrapper{
@@ -374,15 +384,15 @@ ul.paragraph-title-wrapper{
     content: " ";
     display: block;
     position: absolute;
+    background-image: url(../img/circle.png);
 }
 
 .paragraph-title::before{
     top: 12px;
-    width: 50px;
+    width: 29px;
     right: 100%;
     height: 1px;
     background-color: #1553b3;
-    background-image: url(../img/circle.png);
 }
 
 
@@ -391,7 +401,6 @@ ul.paragraph-title-wrapper{
     top: 0.0645in; /*~6,2 px*/
     width: 15px;
     height: 15px;
-    background-image: url(../img/circle.png);
     background-size:15px 15px;
 }
 
@@ -405,6 +414,7 @@ ul.paragraph-title-wrapper{
     letter-spacing: -0.5px;
     text-align: left;
     color: #6b6b6b;
+    margin-left: -22px;
 }
 
 /*delete?*/
@@ -418,10 +428,24 @@ ul.paragraph-title-wrapper{
     letter-spacing: -0.5px;
     text-align: left;
     color: #1553b3;
-    /*background-color:pink; */
+
     background-image: url(../img/gradient_blue.png);
-    background-size: 409px 261px;
-    /*background-image: url(../img/circle_white.png);*/
+    margin-left: -22px;
 }
 
+.paragraph-current.active .paragraph-title::before{
+    background-color: white;
+}
 
+.paragraph-current.active .paragraph-title::after{
+    background-image: url(../img/_circle_white.png);
+}
+
+.paragraph-current::before,.paragraph-current::after{
+    clear: both;
+    content: "";
+    display: block;
+    position: absolute;
+    background-color: red;
+   
+}
