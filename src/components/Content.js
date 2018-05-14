@@ -2,17 +2,24 @@ import React, { Component } from 'react';
 import $ from 'jquery';
 import Chapters from './Chapters'
 import ChapterContent from '../containers/ChapterContent'
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
+import {getChapterList} from '../actions/index'
 
 class Content extends Component{
+	componentDidMount(){
+		this.props.getChapterList(1);
+	}
 	
 	onClick(e){
 		$(".book-titles-wrapper").toggleClass("opened");
         $(".aside-menu-button").toggleClass("opened");
 	}
-	render(){
 
+	render(){
 		return(
 			<div className="Content">
+
 				<div className="book-titles-wrapper">
 					<Chapters/>
 				</div>
@@ -36,4 +43,8 @@ class Content extends Component{
 	}
 }
 
-export default Content;
+function mapDispatchToProps(dispatch){
+	return bindActionCreators({getChapterList:getChapterList},dispatch)
+}
+
+export default connect(null,mapDispatchToProps)(Content);

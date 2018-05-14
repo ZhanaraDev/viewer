@@ -7,11 +7,12 @@ import './assets/css/materialize.min.css';
 import './assets/css/style.css';
 
 
-import {createStore} from 'redux';
+import {createStore, combineReducers, compose, applyMiddleware} from 'redux';
+import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import allReducers from './reducers';
 
-const store = createStore(allReducers)
+const store = createStore(allReducers,compose(applyMiddleware(thunk)));
 
 ReactDOM.render(
 	<Provider store = {store}>
