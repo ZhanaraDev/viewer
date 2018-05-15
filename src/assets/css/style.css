@@ -361,11 +361,17 @@ ul.paragraph-title-wrapper{
     padding-left: 40px;
 }
 
-.paragraph-text{
+.paragraph-text,.chapter-parent,.chapter-child{
     margin-left: 6px;
     margin-top: 11px;
 }
-
+.chapter-parent{
+    color: black;
+    font-weight: bold;
+}
+.chapter-child{
+    color:red;
+}
 .paragraph-title {
     margin-left: -2px;
     position: relative;

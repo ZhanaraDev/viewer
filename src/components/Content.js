@@ -8,7 +8,7 @@ import {getChapterList} from '../actions/index'
 
 class Content extends Component{
 	componentDidMount(){
-		this.props.getChapterList(1);
+		this.props.getChapterList(12);
 	}
 	
 	onClick(e){
