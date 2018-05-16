@@ -2,26 +2,25 @@ import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {select} from '../actions/index'
+import {Link} from 'react-router-dom'
 
 class ChapterList extends Component{
-	showChapter(chapter){
+	showChapter(chapter,i){
 		console.log(chapter.text,"---",chapter.node_parent_id);
 		const par_current_classes = this.props.chapter_active.node_id===chapter.node_id ?"paragraph-current active" : "paragraph-current";
-		const chapter_class_type = chapter.node_parent_id == null ? "chapter-parent":"chapter-child";
 		
 		return(
 			<div className={par_current_classes} href="#" onClick={() => this.props.select(chapter)} key={chapter.node_id} >
 				<ul className="paragraph-title-wrapper">
                     <li>
                         <div className="paragraph-title">
-                            <div className="paragraph-text">Tema</div>
+                            <div className="paragraph-text">Тема {i}</div>
                         </div>
                     </li>
-                    <div className={chapter_class_type}>
-	                    <h5>
+                    <div className="paragraph-text">
 	                    	{chapter.text}
+
 	                    	{this.iterate(chapter.nodes)}
-	                    </h5> 
 	                </div>
 	            </ul>
             </div>
@@ -29,17 +28,19 @@ class ChapterList extends Component{
 	}
 	showSubChapter(chapter){
 		return(
-			<div className="chapter-child" onClick={() => this.props.select(chapter)} key={chapter.node_id} >
-				{chapter.text}
+			<div className="paragraph-text-child" onClick={() => this.props.select(chapter)} key={chapter.node_id} >
+				<Link to="/nodes/">{chapter.text}</Link>
 				{this.iterate(chapter.nodes)}
 			</div>
 		);
 	}
+		
 	iterate(chapters){
+		let i = 1;
 		return chapters.map(
 			(chapter) => {
 				if(chapter.node_parent_id == null)
-					return this.showChapter(chapter);
+					return this.showChapter(chapter,i++);
 				else
 					return this.showSubChapter(chapter);
 					
@@ -47,6 +48,7 @@ class ChapterList extends Component{
 		);
 	}
 
+	// TO DELETE
 	showList(){
 		// console.log("chapter",this.props.chapters.length);
 		return this.props.chapters.map(

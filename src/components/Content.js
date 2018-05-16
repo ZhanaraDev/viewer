@@ -5,10 +5,17 @@ import ChapterContent from '../containers/ChapterContent'
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {getChapterList} from '../actions/index'
+import { withRouter } from 'react-router-dom'
+
 
 class Content extends Component{
+
 	componentDidMount(){
-		this.props.getChapterList(12);
+		if(this.props.location !== undefined){
+			var course_id = this.props.match.params.course_id;
+			if(course_id !== undefined)
+				this.props.getChapterList(course_id);
+		}
 	}
 	
 	onClick(e){

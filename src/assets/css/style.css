@@ -348,7 +348,7 @@ footer {
     z-index:2;
 }
 
-.book-paragpraphs-wrapper::after {
+.book-paragpraphs-wrapper::after{
     left: -8px;
     top: 100px;
     width: 28px;
@@ -361,16 +361,23 @@ ul.paragraph-title-wrapper{
     padding-left: 40px;
 }
 
-.paragraph-text,.chapter-parent,.chapter-child{
+.paragraph-text{
     margin-left: 6px;
-    margin-top: 11px;
+    margin-top: 11px; 
 }
-.chapter-parent{
-    color: black;
-    font-weight: bold;
-}
-.chapter-child{
-    color:red;
+
+.paragraph-text-child{
+    /*color:red;*/
+
+    font-family: Verdana;
+    font-size: 17px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1;
+    letter-spacing: -0.5px;
+    text-align: left;
+    color: #000000;
 }
 .paragraph-title {
     margin-left: -2px;
@@ -447,11 +454,15 @@ ul.paragraph-title-wrapper{
     background-image: url(../img/_circle_white.png);
 }
 
-.paragraph-current::before,.paragraph-current::after{
+.paragraph-text-child::before,.paragraph-text-child::after{
     clear: both;
     content: "";
     display: block;
     position: absolute;
-    background-color: red;
    
+}
+
+.paragraph-text-child::before{
+    background-color: red
+    /*background-image: url(../img/_circle_white.png);*/
 }
