@@ -9,7 +9,9 @@ html, body {
 }
 
 /*----------------------------------------*/
-
+a:hover{
+    color:red;
+}
 header {
     top: 0;
     left: 0;
@@ -464,5 +466,35 @@ ul.paragraph-title-wrapper{
 
 .paragraph-text-child::before{
     background-color: red
-    /*background-image: url(../img/_circle_white.png);*/
+}
+
+/* button styles */
+.item-buttons{
+    display:block;
+    float:right;
+    clear: both;
+    margin-right: -95px;
+}
+.btn-page{
+    content: url(../img/buttons/text_inactive.png);
+
+}
+.btn-video{
+    content: url(../img/buttons/video_inactive.png);
+}
+.btn-animation{
+    content: url(../img/buttons/text_active.png);
+}
+.btn-test{
+    content: url(../img/buttons/test_inactive.png);
+}
+.btn-problem{
+    content: url(../img/buttons/problem_inactive.png);
+}
+
+/* iframe */
+
+iframe{
+    height:700px;
+    width:100%;
 }

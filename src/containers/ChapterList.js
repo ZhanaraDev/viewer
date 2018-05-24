@@ -2,23 +2,27 @@ import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {select} from '../actions/index'
-import {Link} from 'react-router-dom'
+import {Link,withRouter} from 'react-router-dom'
+
 
 class ChapterList extends Component{
+	
+	
 	showChapter(chapter,i){
-		console.log(chapter.text,"---",chapter.node_parent_id);
+		var pathArray = window.location.href.split("/");
+		var courseId = pathArray[pathArray.indexOf("course")+1];
 		const par_current_classes = this.props.chapter_active.node_id===chapter.node_id ?"paragraph-current active" : "paragraph-current";
 		
 		return(
-			<div className={par_current_classes} href="#" onClick={() => this.props.select(chapter)} key={chapter.node_id} >
+			<div className={par_current_classes} href="#"  key={chapter.node_id} >
 				<ul className="paragraph-title-wrapper">
                     <li>
                         <div className="paragraph-title">
                             <div className="paragraph-text">Тема {i}</div>
                         </div>
                     </li>
-                    <div className="paragraph-text">
-	                    	{chapter.text}
+                    <div className="paragraph-text" >
+	                    	<Link to={"/course/"+courseId+"/nodes/"+chapter.node_id} >{chapter.text}</Link>
 
 	                    	{this.iterate(chapter.nodes)}
 	                </div>
@@ -27,10 +31,16 @@ class ChapterList extends Component{
 		);
 	}
 	showSubChapter(chapter){
+		console.log("PROPS===");
+		let pathArray = window.location.href.split("/");
+		let courseId = pathArray[pathArray.indexOf("course")+1];
 		return(
-			<div className="paragraph-text-child" onClick={() => this.props.select(chapter)} key={chapter.node_id} >
-				<Link to="/nodes/">{chapter.text}</Link>
-				{this.iterate(chapter.nodes)}
+			<div className="paragraph-text-child"  key={chapter.node_id} >
+				
+				<Link to={"/course/"+courseId+"/nodes/"+chapter.node_id}  key={chapter.node_id}>{chapter.text}</Link>
+				{
+					this.iterate(chapter.nodes)
+				}
 			</div>
 		);
 	}
