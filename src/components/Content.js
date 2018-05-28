@@ -4,13 +4,11 @@ import Chapters from './Chapters'
 import ChapterContent from '../containers/ChapterContent';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {getChapterList} from '../actions/index';
-import {select,select_item} from '../actions/index';
+import {getChapterList,select,selectItem,getTest} from '../actions/index';
 
 class Content extends Component{
 
 	componentWillMount(){
-		console.log("WHEEEEEEN?");
 		if(this.props.location !== undefined){
 			var course_pk = this.props.match.params.course_pk;
 		
@@ -28,8 +26,14 @@ class Content extends Component{
 			if(chapters[i].node_id === parseInt(node_id)){
 				this.props.select(chapters[i]);
 				for(var j=0;j<chapters[i].items.length;j++){
-					if(chapters[i].items[j].item_id === parseInt(item_id))
-						this.props.select_item(chapters[i].items[j].item_exec_file);
+					if(chapters[i].items[j].item_id === parseInt(item_id)){
+						if(chapters[i].items[j].content_type === 4){
+							console.log("BLABLABLBAL",chapters[i].items[j].item_pk);
+							this.props.getTest(chapters[i].items[j].item_pk)
+						}
+						else
+							this.props.selectItem(chapters[i].items[j].item_exec_file);
+					} 	
 				}
 			}
 			else
@@ -89,7 +93,8 @@ function mapDispatchToProps(dispatch){
 		{
 			getChapterList:getChapterList,
 			select:select,
-			select_item:select_item
+			selectItem:selectItem,
+			getTest: getTest
 		},dispatch
 		)
 }

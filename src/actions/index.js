@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import * as chapterApi from '../api/chapter_list'
+import * as api from '../api/fetch_apis'
 
 export const select = (chapter) => {
 	console.log("CHAPTER IS SELECTED!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
@@ -9,7 +9,8 @@ export const select = (chapter) => {
 	}
 };
 
-export const select_item = (item) => {
+export const selectItem = (item) => {
+	console.log("KINDA ME ");
 	return{
 		type:"ITEM_SELECTED",
 		payload: item
@@ -21,7 +22,7 @@ export const getChapterList = (courseID) => (dispatch, getState) => {
 		type: "ACTION_GET_CHAPTER_LIST_STARTED"
 	});
 
-	chapterApi.getCourseStructure(courseID)
+	api.getCourseStructure(courseID)
 			.then(
 				response => {
 					if(response.status !== 200){
@@ -46,4 +47,34 @@ export const getChapterList = (courseID) => (dispatch, getState) => {
 			.catch(
 				console.log("sorry")
 			);
+}
+
+export const getTest = (itemPK) => (dispatch) => {
+	console.log("GETTING IT");
+	dispatch({
+		type: "ACTION_GET_TEST_STARTED"
+	});
+
+	api.getTest(itemPK)
+		.then(
+			response => {
+				if(response.status !== 200){
+					dispatch({
+						type:"ACTION_GET_TEST_FAILED"
+					})
+				}else{
+					console.log("GETTING IT111");
+					response.text().then(
+						value => {
+							const responseObject = JSON.parse(value);
+							dispatch({
+								type:"ACTION_GET_TEST_SUCEEDED",
+								testJSON: responseObject
+							})
+						}
+					);
+				}
+			}
+		).catch(console.log("sorry_test"));
+
 }

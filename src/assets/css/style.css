@@ -470,10 +470,13 @@ ul.paragraph-title-wrapper{
 
 /* button styles */
 .item-buttons{
-    display:block;
-    float:right;
+    /*float: top;
     clear: both;
-    margin-right: -95px;
+    margin-right: -105px;
+    margin-top: 0px;*/
+    position: fixed;
+    right: 0px;
+    top:150px;
 }
 .btn-page{
     content: url(../img/buttons/text_inactive.png);
@@ -498,3 +501,4 @@ iframe{
     height:700px;
     width:100%;
 }
+

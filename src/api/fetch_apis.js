@@ -15,3 +15,20 @@ export const getCourseStructure = (courseID) => (
     }
   )
 );
+
+
+const testUrl = LOCAL_REST_API_URL + "test/";
+
+
+export const getTest = (itemPK) => (
+  fetch(
+    testUrl+"?item_pk="+itemPK,
+    {
+      method: 'GET',
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+      },
+    }
+  )
+);

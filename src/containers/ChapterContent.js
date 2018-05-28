@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {select_item} from '../actions/index'
+import {selectItem} from '../actions/index'
 import Content from '../components/Content'
 import {
   Link
@@ -19,7 +19,7 @@ class ChapterContent extends Component{
     }
 
 	render(){
-        console.log("lc0ba",this.props.chapter.text);
+        console.log("lc0ba",this.props.active_item);
 		let items = [];
 		if(this.props.chapter !== null && this.props.chapter.items !== undefined){
 			items = this.props.chapter.items
@@ -45,28 +45,63 @@ class ChapterContent extends Component{
                     break;                                   
             }
     		return(
-                <div className="item-buttons" key={item.item_id}>
-                    <Link to={"/course/"+this.course_pk+"/nodes/"+this.node_id+"/item/"+item.item_id}><img className={btn_class} onClick={() => this.props.select_item(item)}></img></Link>
+                <div className="item-button" key={item.item_id}>
+                    <Link to={"/course/"+this.course_pk+"/nodes/"+this.node_id+"/item/"+item.item_id}><img className={btn_class} ></img></Link>
                 <br/>
                 </div>
     		);
     	});
         
-        
+        let i=0;
+        let test_content = this.props.test_content.map(
+            (question) => {
+                i++;
+                return(
+                    <div key={question.question_id}>
+                        <h6>{i}){question.question_html}</h6>
+                        {
+                            question.variants.map(
+                                (variant) => {
+                                        return(
+                                            <div key={variant.id}>
+                                                <label>
+                                                <input type="radio" name={variant.id} defaultChecked={false} disabled={false} value={variant.html} />
+                                                {variant.html} 
+                                                </label>
+                                            </div>
+                                        );
+                                }
+                            )
+                        }
+                    </div>
+
+                )
+                console.log(question.variants)
+                
+            }
+        );
 
 		return (
 			<div className="main-content">
                 <p>
                     {this.props.chapter.text}
                 </p>
-               
+                <h3>hello</h3>
                 
                 {
                     this.props.active_item.length !== 0
                         &&
                     <iframe src={this.props.active_item} ></iframe>
                 }
-                {items_mapped}
+                <form method="post">
+                    {   
+                       test_content
+                    }
+                    <input type="submit"/>
+                </form>
+                <div className="item-buttons">
+                    {items_mapped}
+                </div>
                 
 	        </div>
 		);
@@ -74,14 +109,15 @@ class ChapterContent extends Component{
 }
 
 function mapStateToProps(state){
-    console.warn(1, state.active);
+    console.warn(1, state);
 	return{
 		chapter: state.active,
-        active_item: state.active_item
+        active_item: state.active_item,
+        test_content: state.test_content
 	};
 }
 
 function mapDispatchToProps(dispatch){
-    return bindActionCreators({select_item:select_item},dispatch)
+    return bindActionCreators({selectItem:selectItem},dispatch)
 }
 export default connect (mapStateToProps,mapDispatchToProps)(ChapterContent);

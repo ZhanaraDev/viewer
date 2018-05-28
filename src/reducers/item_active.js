@@ -4,6 +4,7 @@ export default function(state=[], action){
 			console.log("ITEM IS ACTIVE !!!!!!!!!!!!!!!!");
 			return action.payload;
 		default:
+			console.log("ITEM IS ininininACTIVE !!!!!!!!!!!!!!!!");
 			return [];
 	}
 }
