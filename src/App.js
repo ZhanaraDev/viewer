@@ -19,9 +19,9 @@ class App extends Component {
 		<Router>
 		  <div id="app-main">
 			<Header />
-			<Route exact path="/course/:course_pk" component = {Content}/>
-			<Route exact path="/course/:course_pk/nodes/:node_id" component={Content}/>
-			<Route exact path="/course/:course_pk/nodes/:node_id/item/:item_id" component={Content}/>
+			<Route exact path="/viewer/course/:course_pk" component = {Content}/>
+			<Route exact path="/viewer/course/:course_pk/nodes/:node_id" component={Content}/>
+			<Route exact path="/viewer/course/:course_pk/nodes/:node_id/item/:item_id" component={Content}/>
 			<Footer />
 		  </div>
 		</Router>

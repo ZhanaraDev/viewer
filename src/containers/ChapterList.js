@@ -22,7 +22,7 @@ class ChapterList extends Component{
                         </div>
                     </li>
                     <div className="paragraph-text" >
-	                    	<Link to={"/course/"+courseId+"/nodes/"+chapter.node_id} >{chapter.text}</Link>
+	                    	<Link to={"/viewer/course/"+courseId+"/nodes/"+chapter.node_id} >{chapter.text}</Link>
 
 	                    	{this.iterate(chapter.nodes)}
 	                </div>
@@ -37,7 +37,7 @@ class ChapterList extends Component{
 		return(
 			<div className="paragraph-text-child"  key={chapter.node_id} >
 				
-				<Link to={"/course/"+courseId+"/nodes/"+chapter.node_id}  key={chapter.node_id}>{chapter.text}</Link>
+				<Link to={"/viewer/course/"+courseId+"/nodes/"+chapter.node_id}  key={chapter.node_id}>{chapter.text}</Link>
 				{
 					this.iterate(chapter.nodes)
 				}

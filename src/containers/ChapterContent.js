@@ -61,7 +61,7 @@ class ChapterContent extends Component{
             }
     		return(
                 <div className="item-button" key={item.item_id}>
-                    <Link to={"/course/"+this.course_pk+"/nodes/"+this.node_id+"/item/"+item.item_id}><img className={btn_class} ></img></Link>
+                    <Link to={"/viewer/course/"+this.course_pk+"/nodes/"+this.node_id+"/item/"+item.item_id}><img className={btn_class} ></img></Link>
                 <br/>
                 </div>
     		);
