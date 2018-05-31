@@ -1,5 +1,6 @@
 import $ from 'jquery';
-import * as api from '../api/fetch_apis'
+import * as apiGET from '../api/get_apis'
+import * as apiPOST from '../api/post_apis'
 
 export const select = (chapter) => {
 	console.log("CHAPTER IS SELECTED!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
@@ -22,7 +23,7 @@ export const getChapterList = (courseID) => (dispatch, getState) => {
 		type: "ACTION_GET_CHAPTER_LIST_STARTED"
 	});
 
-	api.getCourseStructure(courseID)
+	apiGET.getCourseStructure(courseID)
 			.then(
 				response => {
 					if(response.status !== 200){
@@ -55,7 +56,7 @@ export const getTest = (itemPK) => (dispatch) => {
 		type: "ACTION_GET_TEST_STARTED"
 	});
 
-	api.getTest(itemPK)
+	apiGET.getTest(itemPK)
 		.then(
 			response => {
 				if(response.status !== 200){
@@ -76,5 +77,30 @@ export const getTest = (itemPK) => (dispatch) => {
 				}
 			}
 		).catch(console.log("sorry_test"));
+
+}
+
+export const postTestResults = (data) => (dispatch) => {
+	apiPOST.postTestResults(data)
+		.then(
+			response => {
+				if(response.status !== 200){
+					dispatch({
+						type:"ACTION_POST_TEST_FAILED"
+					})
+				}
+				else{
+					response.text().then(
+						value => {
+							const responseObject = JSON.parse(value)
+							dispatch({
+								type:"ACTION_POST_TEST_SUCEEDED",
+								data: responseObject
+							})
+						}
+					)
+				}
+			}
+		).catch(console.log("sorry again"));
 
 }

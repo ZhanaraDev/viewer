@@ -17,7 +17,7 @@ export const getCourseStructure = (courseID) => (
 );
 
 
-const testUrl = LOCAL_REST_API_URL + "test/";
+const testUrl = LOCAL_REST_API_URL + "test/" +"get_test/";
 
 
 export const getTest = (itemPK) => (

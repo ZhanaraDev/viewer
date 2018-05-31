@@ -7,6 +7,8 @@ export default function(state=[],action){
 		case "ACTION_GET_TEST_STARTED":
 		case "ACTION_GET_TEST_FAILED":
 			return [];
+		case "ACTION_POST_TEST_SUCEEDED":
+			return state;
 		default:
 			return [];
 	}
