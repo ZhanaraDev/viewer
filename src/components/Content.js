@@ -28,7 +28,6 @@ class Content extends Component{
 				for(var j=0;j<chapters[i].items.length;j++){
 					if(chapters[i].items[j].item_id === parseInt(item_id)){
 						if(chapters[i].items[j].content_type === 4){
-							console.log("BLABLABLBAL",chapters[i].items[j].item_pk);
 							this.props.getTest(chapters[i].items[j].item_pk)
 						}
 						else
@@ -52,7 +51,6 @@ class Content extends Component{
 		var item_id = this.props.match.params.item_id;
 		if(node_id){
 			this.iterate(this.props.chapters,node_id,item_id);
-			console.log("selected");
 		}
 		return(
 			<div className="Content">

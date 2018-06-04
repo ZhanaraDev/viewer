@@ -1,6 +1,6 @@
-import { DEV_SERVER_URL, DEV_REST_API_URL } from '../settings/base';
+import { LOCAL_SERVER_URL, LOCAL_REST_API_URL } from '../settings/base';
 
-const courseStructureUrl = DEV_REST_API_URL + "course_structure/";
+const courseStructureUrl = LOCAL_REST_API_URL + "course_structure/";
 
 
 export const getCourseStructure = (courseID) => (
@@ -17,7 +17,7 @@ export const getCourseStructure = (courseID) => (
 );
 
 
-const testUrl = DEV_REST_API_URL + "test/" +"get_test/";
+const testUrl = LOCAL_REST_API_URL + "test/" +"get_test/";
 
 
 export const getTest = (itemPK) => (

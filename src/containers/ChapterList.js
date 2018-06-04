@@ -31,7 +31,6 @@ class ChapterList extends Component{
 		);
 	}
 	showSubChapter(chapter){
-		console.log("PROPS===");
 		let pathArray = window.location.href.split("/");
 		let courseId = pathArray[pathArray.indexOf("course")+1];
 		return(
@@ -58,52 +57,12 @@ class ChapterList extends Component{
 		);
 	}
 
-	// TO DELETE
-	showList(){
-		// console.log("chapter",this.props.chapters.length);
-		return this.props.chapters.map(
-				(chapter) => {
-					// console.log(chapter.nodes,"---",chapter.nodes.length,chapter.nodes.length!==0,'---',chapter.text);
-					let node_text = '';
-					if(chapter.nodes.length!==0){
-						// console.log(chapter.nodes,"---",chapter.nodes.length);
-						chapter.nodes.map(
-							(node) => {
-								node_text = node.text;
-							}
-						)
-					}
-							
-					const par_current_classes = this.props.chapter_active.node_id===chapter.node_id ?"paragraph-current active" : "paragraph-current";
-					return(
-						<div className={par_current_classes} href="#" onClick={() => this.props.select(chapter)} key={chapter.node_id} >
-							<ul className="paragraph-title-wrapper">
-			                    <li>
-			                        <div className="paragraph-title">
-			                            <div className="paragraph-text">Tema
-			                            </div>
-			                            
-			                        </div>
-			                    </li>
-			                    <div className="paragraph-text">
-				                    <h5>
-				                    	{chapter.text}
-				                    </h5> 
-				                </div>
-				            </ul>
-			            </div>
-					);
-
-
-				} 
-			);
-	}
+	
 
 	render(){
 		return(
 			<div className="book-paragpraphs-wrapper">
 				{this.iterate(this.props.chapters)}
-				{/* {this.showList()} */}
 			</div>
 		);
 	}

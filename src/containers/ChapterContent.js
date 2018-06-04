@@ -21,20 +21,31 @@ class ChapterContent extends Component{
 
     handleSubmit = e => {
         e.preventDefault();
-        console.log("DATAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",);
-        
         let questions = $("input[type='text'][name='question']");
         let data = {};
+
         for(let i=0;i<questions.length;i++){
             let selected_answer = $("input[type='radio'][name='"+questions[i].defaultValue+"']:checked");
-            data[questions[i].defaultValue ] = selected_answer[0].value;
+            let result_value;
+            let mc_ans = [];
+            if(selected_answer.length===0){
+                selected_answer = $("input[type='checkbox'][name='"+questions[i].defaultValue+"']:checked");
+                for(let i=0;i<selected_answer.length;i++){
+                    mc_ans.push(selected_answer[i].value);
+                }
+                result_value = mc_ans;
+            }
+            else{
+                result_value = selected_answer[0].value
+            }
+            data[questions[i].defaultValue ] = result_value;
         }
-        console.log(data);
+        
         this.props.postTestResults(data);
+
     }
 
 	render(){
-        console.log("lc0ba",this.props.active_item);
 		let items = [];
 		if(this.props.chapter !== null && this.props.chapter.items !== undefined){
 			items = this.props.chapter.items
@@ -68,10 +79,6 @@ class ChapterContent extends Component{
     	});
         
         let i=0;
-        // if(this.props.test_checked.length !== 0){
-        //     console.log("hihi");
-        //     console.log(this.props.test_checked);
-        // }
         let test_content = this.props.test_content.map(
             (question) => {
                 i++;
@@ -80,21 +87,28 @@ class ChapterContent extends Component{
                         <input type="text"  name="question" defaultValue={question.question_id} hidden/><h6>{i}){question.question_html}</h6>
                         {   
                             question.variants.map(
+
                                 (variant) => {
 
                                     let ansClass = 'variant'
                                     if(this.props.test_checked.length !== 0){
-                                        let isChecked =  this.props.test_checked[question.question_id][variant.id];
+                                        let isChecked = this.props.test_checked[question.question_id][variant.id];
                                         if(isChecked)
                                             ansClass = 'correct-ans';
                                         else if(isChecked == false)
-                                            ansClass = 'wrong-ans'
+                                            ansClass = 'wrong-ans';
                                     }
 
                                     return(
+
                                         <div key={variant.id} className={ansClass}>
                                             <label>
-                                                <input type="radio" name={question.question_id} value={variant.id} defaultChecked />
+                                            {   (question.question_type === 1 &&
+                                                <input type="radio" name={question.question_id} value={variant.id} defaultChecked required/>)
+                                                ||
+                                                (question.question_type === 2 &&
+                                                <input type="checkbox" name={question.question_id} value={variant.id}  required/>)
+                                            }    
                                                 {variant.html} 
                                             </label>
                                         </div>
@@ -104,9 +118,7 @@ class ChapterContent extends Component{
                         }
                     </div>
 
-                )
-                console.log(question.variants)
-                
+                )                
             }
         );
 
