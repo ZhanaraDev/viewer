@@ -31,7 +31,7 @@ class Content extends Component{
 							this.props.getTest(chapters[i].items[j].item_pk)
 						}
 						else
-							this.props.selectItem(chapters[i].items[j].item_exec_file);
+							this.props.selectItem(chapters[i].items[j]);
 					} 	
 				}
 			}

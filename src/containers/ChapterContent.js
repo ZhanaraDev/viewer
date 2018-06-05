@@ -1,12 +1,16 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {selectItem,postTestResults} from '../actions/index'
-import Content from '../components/Content'
+import {selectItem,postTestResults} from '../actions/index';
+import Content from '../components/Content';
+import VideoPlayer from './VideoPlayer';
+
 import {
   Link
-} from 'react-router-dom'
-import $ from 'jquery'
+} from 'react-router-dom';
+import $ from 'jquery';
+import videojs from 'video.js';
+import { Player } from 'video-react';
 
 class ChapterContent extends Component{
 
@@ -18,6 +22,7 @@ class ChapterContent extends Component{
         console.log("lc0",this.props.chapter);
         console.log("lc",this.props.active_item);
     }
+
 
     handleSubmit = e => {
         e.preventDefault();
@@ -45,7 +50,9 @@ class ChapterContent extends Component{
 
     }
 
+
 	render(){
+        // FOR ITEM ICONS RENDERING
 		let items = [];
 		if(this.props.chapter !== null && this.props.chapter.items !== undefined){
 			items = this.props.chapter.items
@@ -78,6 +85,7 @@ class ChapterContent extends Component{
     		);
     	});
         
+        // FOR TEST CONTENT RENDERING
         let i=0;
         let test_content = this.props.test_content.map(
             (question) => {
@@ -107,7 +115,7 @@ class ChapterContent extends Component{
                                                 <input type="radio" name={question.question_id} value={variant.id} defaultChecked required/>)
                                                 ||
                                                 (question.question_type === 2 &&
-                                                <input type="checkbox" name={question.question_id} value={variant.id}  required/>)
+                                                <input type="checkbox" name={question.question_id} value={variant.id} />)
                                             }    
                                                 {variant.html} 
                                             </label>
@@ -121,8 +129,19 @@ class ChapterContent extends Component{
                 )                
             }
         );
+        
+        // VIDEO PLAYER CONSTANTS
+        const videoJsOptions = {
+            autoplay: true,
+            controls: true,
+            sources: [{
+            src: this.props.active_item.item_exec_file ,
+            type: 'video/mp4'
+            }]
+        }
 
 		return (
+            console.log("AAAAAAAA",this.props.active_item),
 			<div className="main-content">
                 <p>
                     {this.props.chapter.text}
@@ -131,7 +150,11 @@ class ChapterContent extends Component{
                 {
                     this.props.active_item.length !== 0
                         &&
-                    <iframe src={this.props.active_item} ></iframe>
+                    this.props.active_item.content_type === 2  && <VideoPlayer { ...videoJsOptions } />
+                    
+                    ||
+
+                    this.props.active_item.content_type !== 4 && <iframe src={this.props.active_item.item_exec_file } ></iframe>
                 }
                 
                 <form onSubmit={this.handleSubmit}>
@@ -139,6 +162,7 @@ class ChapterContent extends Component{
                        test_content
                     }
                     { this.props.test_content.length!==0 && this.props.test_checked.length===0 && <input type="submit"/>} 
+                    {this.props.test_checked.length!==0 && this.props.test_checked["result"]}
                 </form>
                 <div className="item-buttons">
                     {items_mapped}
@@ -159,7 +183,7 @@ function mapStateToProps(state){
 }
 
 function mapDispatchToProps(dispatch){
-    return bindActionCreators({selectItem:selectItem,
+    return bindActionCreators({
         postTestResults:postTestResults},dispatch)
 }
 export default connect (mapStateToProps,mapDispatchToProps)(ChapterContent);
