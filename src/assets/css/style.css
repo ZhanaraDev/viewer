@@ -244,6 +244,7 @@ footer {
     position: relative;
     padding-right: 80px;
     background-image: inherit;
+    z-index: 30;
 }
 
 .book-titles-wrapper.opened {

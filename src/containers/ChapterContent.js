@@ -10,7 +10,6 @@ import {
 } from 'react-router-dom';
 import $ from 'jquery';
 import videojs from 'video.js';
-import { Player } from 'video-react';
 
 class ChapterContent extends Component{
 
