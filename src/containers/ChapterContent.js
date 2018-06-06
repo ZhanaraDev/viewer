@@ -149,11 +149,11 @@ class ChapterContent extends Component{
                 {
                     this.props.active_item.length !== 0
                         &&
-                    this.props.active_item.content_type === 2  && <VideoPlayer { ...videoJsOptions } />
+                    (this.props.active_item.content_type === 2  && <VideoPlayer { ...videoJsOptions } />
                     
                     ||
 
-                    this.props.active_item.content_type !== 4 && <iframe src={this.props.active_item.item_exec_file } ></iframe>
+                    this.props.active_item.content_type !== 4 && <iframe src={this.props.active_item.item_exec_file } ></iframe>)
                 }
                 
                 <form onSubmit={this.handleSubmit}>
@@ -161,7 +161,7 @@ class ChapterContent extends Component{
                        test_content
                     }
                     { this.props.test_content.length!==0 && this.props.test_checked.length===0 && <input type="submit"/>} 
-                    {this.props.test_checked.length!==0 && this.props.test_checked["result"]}
+                    {  this.props.test_checked.length!==0 && this.props.test_checked["result"]}
                 </form>
                 <div className="item-buttons">
                     {items_mapped}

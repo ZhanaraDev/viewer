@@ -4,37 +4,38 @@ import 'video.js/dist/video-js.css';
 import '../assets/css/videojs-style.css';
 export default class VideoPlayer extends React.Component {
 
-  constructor(props){
-    super(props);
-    console.log("VIDEEEP");
-  }
-  componentDidMount() {
-    // instantiate Video.js
-    this.player = videojs(this.videoNode, this.props, function onPlayerReady() {
-      console.log('onPlayerReady', this)
-    });
-    this.player.width(800);
-    this.player.width(700);
-  }
+constructor(props){
+  super(props);
+  console.log("VIDEEEP");
+}
 
-  // destroy player on unmount
-  componentWillUnmount() {
-    if (this.player) {
-      this.player.dispose()
-    }
-  }
-  
+componentDidMount() {
+  // instantiate Video.js
+  this.player = videojs(this.videoNode, this.props, function onPlayerReady() {
+    console.log('onPlayerReady', this)
+  });
+  this.player.width(800);
+  this.player.width(700);
+}
 
-  // wrap the player in a div with a `data-vjs-player` attribute
-  // so videojs won't create additional wrapper in the DOM
-  // see https://github.com/videojs/video.js/pull/3856
-  render() {
-    return (
-      <div>	
-        <div data-vjs-player>
-          <video ref={ node => this.videoNode = node } className="video-js"></video>
-        </div>
+// destroy player on unmount
+componentWillUnmount() {
+  if (this.player) {
+    this.player.dispose()
+  }
+}
+
+
+// wrap the player in a div with a `data-vjs-player` attribute
+// so videojs won't create additional wrapper in the DOM
+// see https://github.com/videojs/video.js/pull/3856
+render() {
+  return (
+    <div>	
+      <div data-vjs-player>
+        <video ref={ node => this.videoNode = node } className="video-js"></video>
       </div>
-    )
-  }
+    </div>
+  )
+}
 }
