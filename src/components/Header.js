@@ -11,7 +11,7 @@ class Header extends Component {
 			            <div className="left-head-wrapper skewed-bg">
 			                <div className="left-head">
 			                    <div className="content">
-			                        <a href="#" id="logo">
+			                        <a href="http://sell.epigraph.kz" id="logo">
 			                        </a>
 			                    </div>
 			                </div>
@@ -21,23 +21,23 @@ class Header extends Component {
 			            <div className="right-head-wrapper">
 			                <div className="right-head">
 			                    <div className="header-tools-wrapper">
-			                        <a href="" className="header-tools book-search">
+			                        <a href="" className="header-tools book-search" title="Поиск по странице">
 			                            </a>
 			                    </div>
 			                    <div className="header-tools-wrapper">
-			                        <a href="" className="header-tools global-search">
+			                        <a href="" className="header-tools global-search" title="Поиск по книге">
 			                            </a>
 			                    </div>
 			                    <div className="header-tools-wrapper">
-			                        <a href="" className="header-tools go-home">
+			                        <a href="" className="header-tools go-home" title="Домашняя страница">
 			                            </a>
 			                    </div>
 			                    <div className="header-tools-wrapper">
-			                        <a href="" className="header-tools back">
+			                        <a href="" className="header-tools back" title="Назад">
 			                            </a>
 			                    </div>
 			                    <div className="header-tools-wrapper">
-			                        <a href="" className="header-tools forward">
+			                        <a href="" className="header-tools forward" title="Вперед">
 			                            </a>
 			                    </div>
 			                </div>

@@ -12,11 +12,13 @@ class Chapters extends Component{
 	                Название книги
 	                Название книги
 	                Название книги
+	                
 	            </div>
 
 	            <ChapterList />
 	            
 	        </div>
+
 		);
 	}
 }
