@@ -6,19 +6,25 @@ import {Link,withRouter} from 'react-router-dom'
 
 
 class ChapterList extends Component{
-	
+	constructor(){
+		super();
+		this.state = {
+            par_current_classes: 'paragraph-current',
+        };
+
+	}
 	
 	showChapter(chapter,i){
 		var pathArray = window.location.href.split("/");
 		var courseId = pathArray[pathArray.indexOf("course")+1];
-		const par_current_classes = this.props.chapter_active.node_id===chapter.node_id ?"paragraph-current active" : "paragraph-current";
-		
+		this.state.par_current_classes = this.props.chapter_active.node_id===chapter.node_id ?"paragraph-current active" : "paragraph-current";
 		return(
-			<div className={par_current_classes} href="#"  key={chapter.node_id} >
+			<div className={this.state.par_current_classes} href="#"  key={chapter.node_id} >
 				<ul className="paragraph-title-wrapper">
                     <li>
                         <div className="paragraph-title">
-                            <div className="paragraph-text">Тема {i}</div>
+                            <div className="paragraph-text">{chapter.text}</div>
+                        	
                         </div>
                     </li>
                     <div className="paragraph-text" >
@@ -33,6 +39,9 @@ class ChapterList extends Component{
 	showSubChapter(chapter){
 		let pathArray = window.location.href.split("/");
 		let courseId = pathArray[pathArray.indexOf("course")+1];
+		this.state.par_current_classes = this.props.chapter_active.node_id===chapter.node_id ?"paragraph-current active" : "paragraph-current";
+		console.log("AHAHHAHAHAAH",this.props.chapter_active.node_id===chapter.node_id,chapter.node_id,this.state.par_current_classes);
+		
 		return(
 			<div className="paragraph-text-child"  key={chapter.node_id} >
 				
@@ -60,9 +69,14 @@ class ChapterList extends Component{
 	
 
 	render(){
+		let course_structure = this.props.chapters;
+		if(this.props.chapters.length !== 0 && this.props.chapters !== undefined){
+			course_structure = this.props.chapters[0]["nodes"];
+		}
 		return(
 			<div className="book-paragpraphs-wrapper">
-				{this.iterate(this.props.chapters)}
+			
+				{this.iterate(course_structure)}
 			</div>
 		);
 	}

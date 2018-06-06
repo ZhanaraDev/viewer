@@ -1,17 +1,20 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
 import ChapterList from '../containers/ChapterList';
-
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 class Chapters extends Component{
 	
 	render(){
+		let courseName = "Название книги"
+		if(this.props.chapters.length !== 0)
+			courseName = this.props.chapters[0]["text"];
+
 		return(
 			<div className="aside-menu-content ">
 
 	            <div className="book-title">
-	                Название книги
-	                Название книги
-	                Название книги
+	            	{courseName}
 	            </div>
 
 	            <ChapterList />
@@ -21,5 +24,10 @@ class Chapters extends Component{
 	}
 }
 
-export default Chapters;
+function mapStateToProps(state){
+	return {
+		chapters: state.chapters
+	};
+}
+export default connect (mapStateToProps)(Chapters);
 
