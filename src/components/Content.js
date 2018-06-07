@@ -58,7 +58,9 @@ class Content extends Component{
 			<div className="Content">
 
 				<div className="book-titles-wrapper">
+				<div className="book-title-background">
 					<Chapters/>
+					</div>
 				</div>
 				<div className="aside-menu-button-wrapper" onClick={this.onClick.bind(this)} >
 					
