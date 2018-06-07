@@ -77,16 +77,26 @@ header::after {
 }
 
 #logo {
+
     display: inline-block;
     position: relative;
-    bottom: -37px;
+    top: 45px;
+    left: 25px;
     vertical-align: middle;
     width: 85px;
     height: 90px;
     background: url(../img/logo.png) no-repeat;
     background-size: 100%;
     text-indent: -9000px;
+    transition: 0.5s ease;
+    webkit-transition:0.5s ease;
 }
+#logo:hover{
+    width: 95px;
+    height: 105px;
+
+}
+
 
 .right-head-wrapper {
     float: right;
@@ -110,6 +120,7 @@ header::after {
 
 .book-search {
     background-image: url(../img/search.png);
+
 }
 
 .book-search:hover {
@@ -263,6 +274,9 @@ footer {
     transform: translate(435px);
 }
 
+.main-content.opened{
+    padding-left: 300px;
+}
 #hexagon {
     width: 135px;
     height: 150px;
@@ -480,21 +494,41 @@ ul.paragraph-title-wrapper{
     right: 0px;
     top:150px;
 }
+
 .btn-page{
     content: url(../img/buttons/text_inactive.png);
-
 }
+
+.btn-page:hover{
+     content: url(../img/buttons/text_active.png);
+}
+
 .btn-video{
     content: url(../img/buttons/video_inactive.png);
+}
+.btn-video:hover{
+    content: url(../img/buttons/video_active.png);
 }
 .btn-animation{
     content: url(../img/buttons/text_active.png);
 }
+
+
 .btn-test{
     content: url(../img/buttons/test_inactive.png);
 }
+
+.btn-test:hover{
+    content: url(../img/buttons/test_active.png);
+
+}
+
 .btn-problem{
     content: url(../img/buttons/problem_inactive.png);
+}
+
+.btn-problem:hover{
+    content: url(../img/buttons/problem_active.png);
 }
 
 /* iframe */
