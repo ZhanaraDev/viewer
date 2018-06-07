@@ -6,6 +6,7 @@ import {Link,withRouter} from 'react-router-dom'
 import $ from 'jquery';
 
 class ChapterList extends Component{
+
 	constructor(){
 		super();
 		this.state = {
@@ -13,13 +14,16 @@ class ChapterList extends Component{
         };
 
 	}
+
 	highlightCurrentChapter(id){
 		console.log("making i","#"+id.toString());
 		console.log(this.refs.id);
 	}
-	showChapter(chapter,i){
-		var pathArray = window.location.href.split("/");
-		var courseId = pathArray[pathArray.indexOf("course")+1];
+
+	showChapter(chapter){
+        let pathArray = window.location.href.split("/");
+        let courseId = pathArray[pathArray.indexOf("course")+1];
+
 		this.state.par_current_classes = this.props.chapter_active.node_id===chapter.node_id ?"paragraph-current active" : "paragraph-current";
 		return(
 			<div id={chapter.node_id} className={this.state.par_current_classes} href="#"  key={chapter.node_id} >
@@ -40,8 +44,6 @@ class ChapterList extends Component{
 		);
 	}
 
-	
-
 	showSubChapter(chapter){
 		let pathArray = window.location.href.split("/");
 		let courseId = pathArray[pathArray.indexOf("course")+1];
@@ -59,19 +61,16 @@ class ChapterList extends Component{
 	}
 		
 	iterate(chapters){
-		let i = 1;
 		return chapters.map(
 			(chapter) => {
 				if(chapter.node_parent_id == null)
-					return this.showChapter(chapter,i++);
+					return this.showChapter(chapter);
 				else
 					return this.showSubChapter(chapter);
 					
 			}
 		);
 	}
-
-	
 
 	render(){
 		let course_structure = this.props.chapters;

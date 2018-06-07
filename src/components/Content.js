@@ -44,8 +44,6 @@ class Content extends Component{
 	onClick(e){
 		$(".book-titles-wrapper").toggleClass("opened");
         $(".aside-menu-button").toggleClass("opened");
-        $(".main-content").toggleClass("opened");
-        // $(".main-content").css('padding-left', 500);
 	}
 
 	render(){
@@ -58,9 +56,9 @@ class Content extends Component{
 			<div className="Content">
 
 				<div className="book-titles-wrapper">
-				<div className="book-title-background">
+				<div className="book-titles-background">
 					<Chapters/>
-					</div>
+				</div>
 				</div>
 				<div className="aside-menu-button-wrapper" onClick={this.onClick.bind(this)} >
 					

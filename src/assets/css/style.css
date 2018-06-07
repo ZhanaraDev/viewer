@@ -50,7 +50,6 @@ header::after {
 }
 
 .left-head {
-
     padding-top: 30px;
     background-size: contain;
     background-image: url(../img/bg.jpg);
@@ -87,13 +86,15 @@ header::after {
     width: 85px;
     height: 90px;
     background: url(../img/logo.png) no-repeat;
-    background-size: 90%;
+    background-size: 100%;
     text-indent: -9000px;
     transition: 0.5s ease;
     webkit-transition:0.5s ease;
 }
 #logo:hover{
-background-size: 100%;
+    width: 95px;
+    height: 105px;
+
 }
 
 
@@ -231,8 +232,6 @@ footer {
     line-height: 1;
 }
 
-
-
 .book-titles-wrapper {
     top: 0;
     left: 0;
@@ -245,7 +244,12 @@ footer {
     transition: all .5s ease;
     transform: translate(-450px);
     background-image: url(../img/asidebg.jpg);
-    background-position: 31.7% 18%;
+}
+
+.book-titles-background{
+    height: 100%;
+    /*position: fixed;
+    overflow: hidden;*/
 }
 
 .aside-menu-content {
@@ -258,13 +262,11 @@ footer {
     padding-right: 80px;
     background-image: inherit;
     z-index: 30;
-
 }
 
 .book-titles-wrapper.opened {
     transform: translate(0);
 }
-
 
 .aside-menu-button {
     top: 300px;
@@ -279,9 +281,8 @@ footer {
 }
 
 .main-content.opened{
-    padding-left: 350px;
+    padding-left: 300px;
 }
-
 #hexagon {
     width: 135px;
     height: 150px;
@@ -452,7 +453,6 @@ ul.paragraph-title-wrapper{
     margin-left: -22px;
 }
 
-
 /*delete?*/
 .paragraph-current.active{
     font-family: Verdana;
@@ -548,9 +548,4 @@ iframe{
 }
 .correct-ans{
     background-color: green;
-}
-
-.paragraph-text-disappear{
-    visibility: hidden;
-    height: 0;
 }
