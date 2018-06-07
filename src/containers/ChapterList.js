@@ -3,7 +3,7 @@ import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
 import {select} from '../actions/index'
 import {Link,withRouter} from 'react-router-dom'
-
+import $ from 'jquery';
 
 class ChapterList extends Component{
 	constructor(){
@@ -13,13 +13,16 @@ class ChapterList extends Component{
         };
 
 	}
-	
+	highlightCurrentChapter(id){
+		console.log("making i","#"+id.toString());
+		console.log(this.refs.id);
+	}
 	showChapter(chapter,i){
 		var pathArray = window.location.href.split("/");
 		var courseId = pathArray[pathArray.indexOf("course")+1];
 		this.state.par_current_classes = this.props.chapter_active.node_id===chapter.node_id ?"paragraph-current active" : "paragraph-current";
 		return(
-			<div className={this.state.par_current_classes} href="#"  key={chapter.node_id} >
+			<div id={chapter.node_id} className={this.state.par_current_classes} href="#"  key={chapter.node_id} >
 				<ul className="paragraph-title-wrapper">
                     <li>
                         <div className="paragraph-title">
@@ -36,16 +39,18 @@ class ChapterList extends Component{
             </div>
 		);
 	}
+
+	
+
 	showSubChapter(chapter){
 		let pathArray = window.location.href.split("/");
 		let courseId = pathArray[pathArray.indexOf("course")+1];
 		this.state.par_current_classes = this.props.chapter_active.node_id===chapter.node_id ?"paragraph-current active" : "paragraph-current";
-		console.log("AHAHHAHAHAAH",this.props.chapter_active.node_id===chapter.node_id,chapter.node_id,this.state.par_current_classes);
 		
 		return(
 			<div className="paragraph-text-child"  key={chapter.node_id} >
 				
-				<Link to={"/viewer/course/"+courseId+"/nodes/"+chapter.node_id}  key={chapter.node_id}>{chapter.text}</Link>
+				<Link to={"/viewer/course/"+courseId+"/nodes/"+chapter.node_id}  key={chapter.node_id} onClick={ ()=> this.highlightCurrentChapter(chapter.node_id) }>{chapter.text}</Link>
 				{
 					this.iterate(chapter.nodes)
 				}

@@ -18,8 +18,6 @@ class ChapterContent extends Component{
         this.course_pk = this.props.path["course_pk"];
         this.node_id = this.props.path["node_id"];
 
-        console.log("lc0",this.props.chapter);
-        console.log("lc",this.props.active_item);
     }
 
 

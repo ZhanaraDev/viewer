@@ -11,7 +11,7 @@ export const getCourseStructure = (courseID) => (
       headers: {
         "Accept": "application/json",
         "Content-Type": "application/json",
-        "Authorization": document.cookie.match(/sessionid=[A-Za-z0-9]+/)[0],
+        // "Authorization": document.cookie.match(/sessionid=[A-Za-z0-9]+/)[0] ,
         // "Authorization": document.cookie,
       },
     }

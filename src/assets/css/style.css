@@ -511,3 +511,7 @@ iframe{
     background-color: green;
 }
 
+.paragraph-text-disappear{
+    visibility: hidden;
+    height: 0;
+}
