@@ -44,6 +44,8 @@ class Content extends Component{
 	onClick(e){
 		$(".book-titles-wrapper").toggleClass("opened");
         $(".aside-menu-button").toggleClass("opened");
+        $(".main-content").toggleClass("opened");
+
 	}
 
 	render(){
