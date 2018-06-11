@@ -1,6 +1,6 @@
-import { LOCAL_SERVER_URL, LOCAL_REST_API_URL } from '../settings/base';
+import { SERVER_URL, REST_API_URL } from '../settings/base';
 
-const checkTestUrl = LOCAL_REST_API_URL + "test/"+"check_test/";
+const checkTestUrl = REST_API_URL + "test/"+"check_test/";
 
 export const postTestResults = (data) => (
 

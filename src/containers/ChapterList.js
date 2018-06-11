@@ -1,32 +1,41 @@
 import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {select} from '../actions/index'
+import {select,highlightActiveBlock} from '../actions/index'
 import {Link,withRouter} from 'react-router-dom'
 import $ from 'jquery';
+import { findDOMNode } from 'react-dom';
 
 class ChapterList extends Component{
 
 	constructor(){
 		super();
-		this.state = {
-            par_current_classes: 'paragraph-current',
-        };
-
 	}
 
 	highlightCurrentChapter(id){
-		console.log("making i","#"+id.toString());
-		console.log(this.refs.id);
+		this.props.highlightActiveBlock(id);
+		// $(".paragraph-current.active").removeClass("active");
+
+		// if (!$("#"+id).hasClass('active')){
+		// 	$("#"+id).toggleClass('active');
+		// }
+
 	}
 
 	showChapter(chapter){
         let pathArray = window.location.href.split("/");
         let courseId = pathArray[pathArray.indexOf("course")+1];
+        if(this.props.chapter_active.node_id===chapter.node_id){
+        	
+        	this.highlightCurrentChapter(chapter.node_id)
+        }
 
-		this.state.par_current_classes = this.props.chapter_active.node_id===chapter.node_id ?"paragraph-current active" : "paragraph-current";
+		let par_current_classes = chapter.node_id===this.props.active_block ?"paragraph-current active" : "paragraph-current";
+
 		return(
-			<div id={chapter.node_id} className={this.state.par_current_classes} href="#"  key={chapter.node_id} >
+
+			<div id={chapter.node_id}  href="#" className={par_current_classes} key={chapter.node_id} >
+			
 				<ul className="paragraph-title-wrapper">
                     <li>
                         <div className="paragraph-title">
@@ -44,15 +53,18 @@ class ChapterList extends Component{
 		);
 	}
 
-	showSubChapter(chapter){
+	showSubChapter(chapter,mainParentId){
 		let pathArray = window.location.href.split("/");
 		let courseId = pathArray[pathArray.indexOf("course")+1];
-		this.state.par_current_classes = this.props.chapter_active.node_id===chapter.node_id ?"paragraph-current active" : "paragraph-current";
 		
+		if(this.props.chapter_active.node_id===chapter.node_id){
+			this.highlightCurrentChapter(mainParentId);
+		}
+
 		return(
 			<div className="paragraph-text-child"  key={chapter.node_id} >
 				
-				<Link to={"/viewer/course/"+courseId+"/nodes/"+chapter.node_id}  key={chapter.node_id} onClick={ ()=> this.highlightCurrentChapter(chapter.node_id) }>{chapter.text}</Link>
+				<Link to={"/viewer/course/"+courseId+"/nodes/"+chapter.node_id}  key={chapter.node_id}>{chapter.text}</Link>
 				{
 					this.iterate(chapter.nodes)
 				}
@@ -63,10 +75,12 @@ class ChapterList extends Component{
 	iterate(chapters){
 		return chapters.map(
 			(chapter) => {
-				if(chapter.node_parent_id == null)
+				if(chapter.node_parent_id == null){
+					this.mainParentId = chapter.node_id;
 					return this.showChapter(chapter);
+				}
 				else
-					return this.showSubChapter(chapter);
+					return this.showSubChapter(chapter,this.mainParentId);
 					
 			}
 		);
@@ -89,12 +103,16 @@ class ChapterList extends Component{
 function mapStateToProps(state){
 	return {
 		chapters: state.chapters,
-		chapter_active: state.active
+		chapter_active: state.active,
+		active_block: state.active_block
 	};
 }
 
 function mapDispatchToProps(dispatch){
-	return bindActionCreators({select:select},dispatch)
+	return bindActionCreators({
+		select:select,
+		highlightActiveBlock:highlightActiveBlock
+	},dispatch)
 }
 
 export default connect(mapStateToProps,mapDispatchToProps)(ChapterList);

@@ -2,8 +2,13 @@ import $ from 'jquery';
 import * as apiGET from '../api/get_apis'
 import * as apiPOST from '../api/post_apis'
 
+export const highlightActiveBlock = (blockId) => {
+	return{
+		type: "BLICK_IS_ACTIVE",
+		payload: blockId
+	}
+}
 export const select = (chapter) => {
-	console.log("CHAPTER IS SELECTED!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 	return {
 		type:"CHAPTER_SELECTED",
 		payload: chapter
@@ -11,7 +16,6 @@ export const select = (chapter) => {
 };
 
 export const selectItem = (item) => {
-	console.log("KINDA ME ");
 	return{
 		type:"ITEM_SELECTED",
 		payload: item
