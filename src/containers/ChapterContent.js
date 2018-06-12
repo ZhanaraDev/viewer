@@ -1,15 +1,13 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
-import {selectItem,postTestResults} from '../actions/index';
-import Content from '../components/Content';
+import {postTestResults} from '../actions/index';
 import VideoPlayer from './VideoPlayer';
 
 import {
   Link
 } from 'react-router-dom';
 import $ from 'jquery';
-import videojs from 'video.js';
 
 class ChapterContent extends Component{
 

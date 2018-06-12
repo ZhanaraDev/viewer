@@ -1,4 +1,4 @@
-import {SERVER_URL, REST_API_URL } from '../settings/base';
+import {SERVER_URL, REST_API_URL,STD_HEADERS } from '../settings/base';
 const courseStructureUrl = REST_API_URL + "course_structure/";
 
 
@@ -7,12 +7,7 @@ export const getCourseStructure = (courseID) => (
     courseStructureUrl+"?course_id="+courseID,
     {
       method: 'GET',
-      headers: {
-        "Accept": "application/json",
-        "Content-Type": "application/json",
-        // "Authorization": document.cookie.match(/sessionid=[A-Za-z0-9]+/)[0] ,
-        // "Authorization": document.cookie,
-      },
+      headers: STD_HEADERS,
     }
   )
 );

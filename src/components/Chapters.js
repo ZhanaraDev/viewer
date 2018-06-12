@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import $ from 'jquery';
 import ChapterList from '../containers/ChapterList';
 import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
+
 class Chapters extends Component{
 	
 	render(){

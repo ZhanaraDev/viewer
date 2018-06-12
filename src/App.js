@@ -3,10 +3,7 @@ import './App.css';
 
 import Header from './components/Header';
 import Content from './components/Content';
-import Chapters from './components/Chapters';
 import Footer from './components/Footer';
-import ChapterList from './containers/ChapterList';
-import ChapterContent from './containers/ChapterContent';
 import {
   BrowserRouter as Router,
   Route

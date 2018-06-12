@@ -1,16 +1,10 @@
 import React, {Component} from 'react';
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-import {select,highlightActiveBlock} from '../actions/index'
-import {Link,withRouter} from 'react-router-dom'
-import $ from 'jquery';
-import { findDOMNode } from 'react-dom';
+import {select,highlightActiveBlock} from '../actions/index';
+import {Link} from 'react-router-dom';
 
 class ChapterList extends Component{
-
-	constructor(){
-		super();
-	}
 
 	highlightCurrentChapter(id){
 		this.props.highlightActiveBlock(id);

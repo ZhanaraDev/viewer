@@ -1,1 +1,1 @@
-export {SERVER_URL, REST_API_URL} from '../settings/production';
+export * from '../settings/production';
