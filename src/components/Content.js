@@ -18,9 +18,7 @@ class Content extends Component{
 		}
 	}
 	
-	componentDidMount(){
-		console.log("AAAAAA",this.props.match.params);
-	}
+	
 	iterate(chapters,node_id,item_id){
 		for(var i=0;i<chapters.length;i++){
 			if(chapters[i].node_id === parseInt(node_id)){

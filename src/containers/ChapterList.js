@@ -8,12 +8,6 @@ class ChapterList extends Component{
 
 	highlightCurrentChapter(id){
 		this.props.highlightActiveBlock(id);
-		// $(".paragraph-current.active").removeClass("active");
-
-		// if (!$("#"+id).hasClass('active')){
-		// 	$("#"+id).toggleClass('active');
-		// }
-
 	}
 
 	showChapter(chapter){
