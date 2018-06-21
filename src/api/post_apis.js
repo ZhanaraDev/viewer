@@ -1,4 +1,4 @@
-import { SERVER_URL, REST_API_URL } from '../settings/base';
+import { SERVER_URL, REST_API_URL,STD_HEADERS} from '../settings/base';
 
 const checkTestUrl = REST_API_URL + "test/"+"check_test/";
 
@@ -8,10 +8,7 @@ export const postTestResults = (data) => (
 		checkTestUrl,
 		{
 			method: "POST",
-			headers:{
-				"Accept":"application/json",
-				"Content-Type":"application/json",
-			},
+			headers: STD_HEADERS,   
 			body:JSON.stringify(data)
 		}
 	)
