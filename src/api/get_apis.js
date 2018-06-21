@@ -23,7 +23,7 @@ export const getTest = (itemPK) => (
       method: 'GET',
       headers: {
         "Accept": "application/json",
-        "Content-Type": "application/json",
+        headers: STD_HEADERS,      
       },
     }
   )
