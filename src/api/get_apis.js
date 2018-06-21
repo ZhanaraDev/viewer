@@ -21,10 +21,8 @@ export const getTest = (itemPK) => (
     testUrl+"?item_pk="+itemPK,
     {
       method: 'GET',
-      headers: {
-        "Accept": "application/json",
-        headers: STD_HEADERS,      
-      },
+      headers: STD_HEADERS,      
+
     }
   )
 );
