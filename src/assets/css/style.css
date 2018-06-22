@@ -548,3 +548,7 @@ iframe{
 .correct-ans{
     background-color: green;
 }
+
+.iframe-page-content{
+    background:url(../img/logo_anim.svg) center center no-repeat;
+}
