@@ -507,14 +507,14 @@ ul.paragraph-title-wrapper{
      content: url(../img/buttons/text_active.png);
 }
 
-.btn-video,.btn-page::after{
+.btn-video,.btn-video::after{
     content: url(../img/buttons/video_inactive.png);
 }
 .btn-video:hover{
     content: url(../img/buttons/video_active.png);
 }
 
-.btn-animation,.btn-page::after{
+.btn-animation,.btn-animation::after{
     content: url(../img/buttons/text_active.png);
 }
 .btn-animation::hover{
@@ -528,7 +528,7 @@ ul.paragraph-title-wrapper{
     content: url(../img/buttons/test_active.png);
 }
 
-.btn-problem,.btn-page::after{
+.btn-problem,.btn-problem::after{
     content: url(../img/buttons/problem_inactive.png);
 }
 .btn-problem:hover{
