@@ -7,7 +7,7 @@ import {connect} from 'react-redux';
 import {getChapterList,select,selectItem,getTest} from '../actions/index';
 
 class Content extends Component{
-
+	
 	componentWillMount(){
 		if(this.props.location !== undefined){
 			var course_pk = this.props.match.params.course_pk;
@@ -17,7 +17,7 @@ class Content extends Component{
 			}
 		}
 	}
-	
+
 	
 	iterate(chapters,node_id,item_id){
 		for(var i=0;i<chapters.length;i++){
@@ -28,8 +28,9 @@ class Content extends Component{
 						if(chapters[i].items[j].content_type === 4){
 							this.props.getTest(chapters[i].items[j].item_pk)
 						}
-						else
+						else{
 							this.props.selectItem(chapters[i].items[j]);
+						}
 					} 	
 				}
 			}

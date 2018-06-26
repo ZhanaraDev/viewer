@@ -11,13 +11,6 @@ import $ from 'jquery';
 
 class ChapterContent extends Component{
 
-    constructor(props){
-        super(props)
-        this.course_pk = this.props.path["course_pk"];
-        this.node_id = this.props.path["node_id"];
-
-    }
-
 
     handleSubmit = e => {
         e.preventDefault();
@@ -74,7 +67,7 @@ class ChapterContent extends Component{
             }
     		return(
                 <div className="item-button" key={item.item_id}>
-                    <Link to={"/viewer/course/"+this.course_pk+"/nodes/"+this.node_id+"/item/"+item.item_id}><img className={btn_class} ></img></Link>
+                    <Link to={"/viewer/course/"+this.props.path["course_pk"]+"/nodes/"+this.props.path["node_id"]+"/item/"+item.item_id}><img className={btn_class} ></img></Link>
                 <br/>
                 </div>
     		);
@@ -136,7 +129,6 @@ class ChapterContent extends Component{
         }
 
 		return (
-            console.log("AAAAAAAA",this.props.active_item),
 			<div className="main-content">
                 <p>
                     {this.props.chapter.text}
@@ -149,7 +141,7 @@ class ChapterContent extends Component{
                     
                     ||
 
-                    this.props.active_item.content_type !== 4 && <iframe class="iframe-page-content" src={this.props.active_item.item_exec_file } ></iframe>)
+                    this.props.active_item.content_type !== 4 && <iframe className = "iframe-page-content" src={this.props.active_item.item_exec_file } ></iframe>)
                 }
                 
                 <form onSubmit={this.handleSubmit}>

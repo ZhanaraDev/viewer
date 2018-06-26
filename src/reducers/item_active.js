@@ -1,10 +1,11 @@
 export default function(state=[], action){
 	switch(action.type){
 		case "ITEM_SELECTED":
-			console.log("ITEM IS ACTIVE !!!!!!!!!!!!!!!!");
 			return action.payload;
-		default:
-			console.log("ITEM IS ininininACTIVE !!!!!!!!!!!!!!!!");
+		case "ACTION_GET_TEST_SUCEEDED":
+		case "CHAPTER_SELECTED":
 			return [];
+		default:
+			return state;
 	}
 }

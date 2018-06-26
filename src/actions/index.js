@@ -4,7 +4,7 @@ import * as apiPOST from '../api/post_apis'
 
 export const highlightActiveBlock = (blockId) => {
 	return{
-		type: "BLICK_IS_ACTIVE",
+		type: "BLOCK_IS_ACTIVE",
 		payload: blockId
 	}
 }
@@ -55,7 +55,6 @@ export const getChapterList = (courseID) => (dispatch, getState) => {
 }
 
 export const getTest = (itemPK) => (dispatch) => {
-	console.log("GETTING IT");
 	dispatch({
 		type: "ACTION_GET_TEST_STARTED"
 	});
@@ -68,7 +67,6 @@ export const getTest = (itemPK) => (dispatch) => {
 						type:"ACTION_GET_TEST_FAILED"
 					})
 				}else{
-					console.log("GETTING IT111");
 					response.text().then(
 						value => {
 							const responseObject = JSON.parse(value);
