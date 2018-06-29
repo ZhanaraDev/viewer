@@ -141,7 +141,7 @@ class ChapterContent extends Component{
                     
                     ||
 
-                    this.props.active_item.content_type !== 4 && <iframe className = "iframe-page-content" src={this.props.active_item.item_exec_file } ></iframe>)
+                    this.props.active_item.content_type !== 4 && <iframe onload="$('.iframe-page-content').css('background-image', 'none');" className = "iframe-page-content" src={this.props.active_item.item_exec_file } ></iframe>)
                 }
                 
                 <form onSubmit={this.handleSubmit}>
