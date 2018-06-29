@@ -137,11 +137,13 @@ class ChapterContent extends Component{
                 {
                     this.props.active_item.length !== 0
                         &&
-                    (this.props.active_item.content_type === 2  && <VideoPlayer { ...videoJsOptions } />
+                    (
+                        this.props.active_item.content_type === 2  && <VideoPlayer { ...videoJsOptions } />
                     
                     ||
 
-                    this.props.active_item.content_type !== 4 && <iframe onload="$('.iframe-page-content').css('background-image', 'none');" className = "iframe-page-content" src={this.props.active_item.item_exec_file } ></iframe>)
+                        this.props.active_item.content_type !== 4 && <div className = "iframe-page-content"><iframe onload="$('.iframe-page-content').css('background-image', 'none');" src={this.props.active_item.item_exec_file } ></iframe></div>
+                    )
                 }
                 
                 <form onSubmit={this.handleSubmit}>
