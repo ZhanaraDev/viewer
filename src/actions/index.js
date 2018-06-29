@@ -50,7 +50,7 @@ export const getChapterList = (courseID) => (dispatch, getState) => {
 				}
 			)
 			.catch(
-				console.log("sorry")
+				(e)=>{console.log(e)}
 			);
 }
 
@@ -78,7 +78,9 @@ export const getTest = (itemPK) => (dispatch) => {
 					);
 				}
 			}
-		).catch(console.log("sorry_test"));
+		).catch(
+			(e)=>{console.log(e)}
+		);
 
 }
 
@@ -94,7 +96,7 @@ export const postTestResults = (data) => (dispatch) => {
 				else{
 					response.text().then(
 						value => {
-							const responseObject = JSON.parse(value)
+							const responseObject = JSON.parse(value);
 							dispatch({
 								type:"ACTION_POST_TEST_SUCEEDED",
 								data: responseObject
@@ -103,6 +105,9 @@ export const postTestResults = (data) => (dispatch) => {
 					)
 				}
 			}
-		).catch(console.log("sorry again"));
+		).catch(
+			
+			(e)=>{console.log(e)}
+		);
 
 }

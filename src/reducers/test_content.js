@@ -6,7 +6,7 @@ export default function(state=[],action){
 		case "ACTION_GET_TEST_FAILED":
 			return [];
 		case "ACTION_POST_TEST_SUCEEDED":
-			return action.testJSON;
+			return state;
 		default:
 			return [];
 	}
